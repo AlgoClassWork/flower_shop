@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Добро пожаловать на наш сайт</h1>
+    </header>
+    <nav>
+        <a href="">Главная</a>
+        <a href="">О нас</a>
+        <a href="">Конакты</a>
+    </nav>
+
+    <div class="products">
+        {%  for flower in flowers  %}
+            <div class="card">
+                <img src="{{ url_for('static', filename=flower[5]) }} ">
+                <h2> {{ flower[1] }} </h2>
+                <p>Описание: {{ flower[2] }} </p>
+                <p>Цена: {{ flower[3] }} </p>
+                <p>Количество: {{ flower[4] }} </p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>Работаем с 1488 года</p>
+    </footer>
+
+</body>
+</html>

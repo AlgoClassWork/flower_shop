@@ -1,0 +1,48 @@
+body {
+    font-family: sans-serif;
+}
+
+header {
+    background-color: palegreen;
+    padding: 20px;
+}
+
+nav {
+    background-color: palegreen;
+    display: flex;
+}
+
+nav a {
+    color: black;
+    padding: 15px 20px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: chartreuse;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    border: 1px solid palegreen;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    width: 200px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: palegreen;
+    text-align: center;
+    padding: 20px;
+}
