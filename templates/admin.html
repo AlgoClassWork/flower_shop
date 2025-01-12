@@ -21,6 +21,28 @@
         <button type="submit">Добавить</button>
     </form>
 
+    <h2>Редактировать</h2>
+    <ul>
+        {% for flower in flowers %}
+            <li>
+                <form action="/admin" method="post">
+                    <input type="hidden" name="flower_id" value="{{ flower[0] }}">
+                    <input type="hidden" name="action" value="edit">
+                    <input type="text" name="name" value="{{ flower[1] }}">
+                    <input type="text" name="description" value="{{ flower[2] }}">
+                    <input type="text" name="price" value="{{ flower[3] }}">
+                    <input type="text" name="quantity" value="{{ flower[4] }}">
+                    <input type="text" name="image_path" value="{{ flower[5] }}">
+                    <button type="submit">Сохранить</button>
+                </form>
+                <form action="/admin" method="post">
+                    <input type="hidden" name="flower_id" value="{{ flower[0] }}">
+                    <input type="hidden" name="action" value="delete">
+                    <button type="submit">Удалить</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
 
 </body>
 </html>
