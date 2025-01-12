@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    
+    <h1>Панель администратора</h1>
+    <h2>Добавить букет</h2>
+
+    <form action="/admin" method="post">
+        <input type="hidden" name="action" value="add">
+        <input type="text" name="name" placeholder="название"> <br>
+        <input type="text" name="description" placeholder="описание"> <br>
+        <input type="text" name="price" placeholder="цена"> <br>
+        <input type="text" name="quantity" placeholder="количество"> <br>
+        <input type="text" name="image_path" placeholder=""> <br>
+        <button type="submit">Добавить</button>
+    </form>
+
+
+</body>
+</html>
