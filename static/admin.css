@@ -1,0 +1,130 @@
+/* Общие стили для страницы */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #4CAF50;
+    margin-top: 20px;
+}
+
+/* Стилизация формы добавления букета */
+form {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    text-align: center;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Стилизация списка элементов */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Стили для формы редактирования */
+.edit-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 80%;
+}
+
+.edit-form input[type="text"] {
+    width: 150px;
+    margin: 5px;
+}
+
+.save-btn, .delete-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.save-btn:hover, .delete-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Респонсивность */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .edit-form {
+        width: 100%;
+    }
+
+    .edit-form input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .save-btn, .delete-btn {
+        width: 100%;
+        margin-top: 5px;
+    }
+}
