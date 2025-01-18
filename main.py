@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flower_db import *
 
 app = Flask(__name__)
@@ -10,11 +10,14 @@ def index():
 
 @app.route('/flower/<int:flower_id>')
 def flower_detail(flower_id):
-    flower = get_flower(flower_id)
-    return render_template('flower_detail.html', flower=flower)
+    flower = get_flower_by_id(flower_id)
+    if flower:
+        return render_template('flower_detail.html', flower=flower)
+    else:
+        return "Flower not found", 404
 
 
-@app.route('/admin', methods=['GET','POST'])
+@app.route('/admin', methods=['GET', 'POST'])
 def admin():
     if request.method == 'POST':
         flower_id = request.form.get('flower_id')
@@ -27,12 +30,15 @@ def admin():
 
         if action == 'add':
             add_flower(name, description, price, quantity, image_path)
-        if action == 'edit':
+        elif action == 'edit':
             update_flower(name, description, price, quantity, image_path, flower_id)
-        if action == 'delete':
+        elif action == 'delete':
             delete_flower(flower_id)
-        
+
+        return redirect(url_for('admin'))
+
     flowers = get_all_flowers()
     return render_template('admin.html', flowers=flowers)
 
-app.run()
+if __name__ == '__main__':
+    app.run(debug=True)
