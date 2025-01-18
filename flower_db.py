@@ -1,59 +1,65 @@
 import sqlite3
 
+# Функция для создания базы данных и таблицы цветов
 def create_database():
-    connection = sqlite3.connect('flowers.db')
-    cursor = connection.cursor()
-    cursor.execute(     '''
-    CREATE TABLE IF NOT EXISTS flowers (
-    id INTEGER PRIMARY KEY,
-    name TEXT NOT NULL,
-    description TEXT,
-    price REAL,
-    quantity INTEGER,
-    image_path TEXT)    ''')
-    connection.commit()
-    connection.close()
+    conn = sqlite3.connect('flowers.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS flowers (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    description TEXT,
+                    price REAL,
+                    quantity INTEGER,
+                    image_path TEXT
+                )''')
+    conn.commit()
+    conn.close()
 
-def add_flower(name, description, price, quantity , image_path):
-    connection = sqlite3.connect('flowers.db')
-    cursor = connection.cursor()
-    cursor.execute('''
-    INSERT INTO flowers (name, description, price, quantity, image_path)
-    VALUES (?, ?, ?, ?, ?)''', (name, description, price, quantity, image_path))
-    connection.commit()
-    connection.close()
-
-def update_flower(name, description, price, quantity , image_path, id):
-    connection = sqlite3.connect('flowers.db')
-    cursor = connection.cursor()
-    cursor.execute('''
-    UPDATE flowers SET name=?, description=?, price=?, quantity=?, image_path=?
-    WHERE id=?''', (name, description, price, quantity, image_path, id))
-    connection.commit()
-    connection.close()
-
-def delete_flower(id):
-    connection = sqlite3.connect('flowers.db')
-    cursor = connection.cursor()
-    cursor.execute('DELETE FROM flowers WHERE id=?', (id))
-    connection.commit()
-    connection.close()
-
+# Функция для получения информации о цветах из базы данных
 def get_all_flowers():
-    connection = sqlite3.connect('flowers.db')
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM flowers')
-    flowers = cursor.fetchall()
-    connection.close()
+    conn = sqlite3.connect('flowers.db')
+    c = conn.cursor()
+    c.execute('''SELECT * FROM flowers''')
+    flowers = c.fetchall()
+    conn.close()
     return flowers
 
-def get_flower(id):
-    connection = sqlite3.connect('flowers.db')
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM flowers WHERE id=?', (id))
-    flower = cursor.fetchall()
-    connection.close()
+# Функция для получения информации о конкретном цветке по ID
+def get_flower_by_id(flower_id):
+    conn = sqlite3.connect('flowers.db')
+    c = conn.cursor()
+    c.execute('''SELECT * FROM flowers WHERE id=?''', (flower_id,))
+    flower = c.fetchone()
+    conn.close()
     return flower
 
+
+# Функция для добавления цветка в базу данных
+def add_flower(name, description, price, quantity, image_path):
+    conn = sqlite3.connect('flowers.db')
+    c = conn.cursor()
+    c.execute('''INSERT INTO flowers (name, description, price, quantity, image_path)
+                 VALUES (?, ?, ?, ?, ?)''', (name, description, price, quantity, image_path))
+    conn.commit()
+    conn.close()
+
+# Функция для обновления информации о цветке в базе данных
+def update_flower(name, description, price, quantity, image_path, flower_id):
+    conn = sqlite3.connect('flowers.db')
+    c = conn.cursor()
+    c.execute('''UPDATE flowers SET name=?, description=?, price=?, quantity=?, image_path=? WHERE id=?''',
+              (name, description, price, quantity, image_path, flower_id))
+    conn.commit()
+    conn.close()
+
+# Функция для удаления цветка из базы данных
+def delete_flower(flower_id):
+    conn = sqlite3.connect('flowers.db')
+    c = conn.cursor()
+    c.execute('''DELETE FROM flowers WHERE id=?''', (flower_id,))
+    conn.commit()
+    conn.close()
+
+# Создаем базу данных, если она еще не существует
 create_database()
 
