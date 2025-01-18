@@ -8,6 +8,11 @@ def index():
     flowers = get_all_flowers()
     return render_template('index.html', flowers=flowers)
 
+@app.route('/flower/<int:flower_id>')
+def flower_detail(flower_id):
+    flower = get_flower(flower_id)
+    return render_template('flower_detail.html', flower=flower)
+
 
 @app.route('/admin', methods=['GET','POST'])
 def admin():
