@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {{ flower[1] }} - Flower Shop </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='detail.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1> {{ flower[1] }} </h1>
+    </header>
+
+    <main>
+        <div class="flower-detail">
+            <img src="{{ url_for('static', filename=flower[5]) }} ">
+            <h2> {{ flower[1] }} </h2>
+            <p>Описание: {{ flower[2] }} </p>
+            <p>Цена: {{ flower[3] }} </p>
+            <p>Количество: {{ flower[4] }} </p>
+        </div>
+        <div>
+            <a href="{{ url_for('index') }}">Назад</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Работаем с 1488 года</p>
+    </footer>
+ 
+</body>
+</html>
