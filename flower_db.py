@@ -62,4 +62,3 @@ def delete_flower(flower_id):
 
 # Создаем базу данных, если она еще не существует
 create_database()
-
