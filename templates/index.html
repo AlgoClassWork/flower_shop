@@ -24,6 +24,7 @@
                 <p>Описание: {{ flower[2] }} </p>
                 <p>Цена: {{ flower[3] }} </p>
                 <p>Количество: {{ flower[4] }} </p>
+                <a href="{{url_for('flower_detail', flower_id=flower[0])}}">Подробнее</a>
             </div>
         {% endfor %}
     </div>
